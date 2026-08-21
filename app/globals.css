@@ -8,9 +8,14 @@ html {
   font-size: 1rem;
 }
 
-
 .menueScreen{
   text-align: center;
+}
+
+:root {
+  --menueButtonHeight: 15vh;
+  --menueTransitionSpeed: 200ms;
+
 }
 
 .menueButton {
@@ -19,9 +24,9 @@ html {
   color: white;
   border: none;
   width: 100%;
-  height: 15vh;
+  height: var(--menueButtonHeight);
   font-size: 0.8rem;
-  transition: 200ms;
+  transition: var(--menueTransitionSpeed);
   border-top: 1px white solid;
 }
 
@@ -39,4 +44,45 @@ html {
 
 .mainMenue:hover {
   height: 7vh;
+}
+
+/* Login Form */
+
+input:focus {
+    outline: none;
+}
+
+input::placeholder {
+    color: lightgray;
+}
+
+.loginForm input {
+  width: 100%;
+  height: var(--menueButtonHeight);
+  text-align: center;
+  border: none;
+}
+
+.loginForm button {
+  width: 50%;
+  height: var(--menueButtonHeight);
+  background-color: lightgray;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.loginForm button:hover {
+  transition: var(--menueTransitionSpeed);
+  background-color: black;
+}
+
+.loginForm small {
+  margin-top: 10px;
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-size: 0.8rem;
+  color: red;
 }

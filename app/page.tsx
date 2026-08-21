@@ -6,7 +6,10 @@ import Link from "next/link";
 export default function Home() {
   return (
     <div className="menueScreen">
-      <MenueButton name="Start Game" linkTarget="pages/loginPage"></MenueButton>{" "}
+      <MenueButton
+        name="Start Game"
+        linkTarget="pages/accountPage"
+      ></MenueButton>{" "}
       <br />
       <MenueButton
         name="How To Play"
@@ -14,7 +17,7 @@ export default function Home() {
       ></MenueButton>{" "}
       <br />
       <MenueButton name="Credits" linkTarget="pages/creditsPage"></MenueButton>
-      <MainMenueLayout name="IDLE TOWER" backButton>
+      <MainMenueLayout name="IDLE TOWER" backButton={false}>
         <></>
       </MainMenueLayout>
     </div>

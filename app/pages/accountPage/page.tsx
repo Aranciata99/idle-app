@@ -3,15 +3,15 @@ import React from "react";
 import MainMenueLayout from "../../components/startMenue/MainMenueLayout";
 import LoginForm from "../../components/startMenue/LoginForm";
 
-const loginPage = () => {
+const accountPage = () => {
   return (
     <>
       <LoginForm></LoginForm>
-      <MainMenueLayout name="LOG IN" backButton>
+      <MainMenueLayout name="ACCOUNT" backButton>
         <></>
       </MainMenueLayout>
     </>
   );
 };
 
-export default loginPage;
+export default accountPage;

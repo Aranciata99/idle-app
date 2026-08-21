@@ -2,6 +2,7 @@ import React from "react";
 import { ReactNode } from "react";
 
 import MainMenueButton from "./MainMenueButton";
+import { log } from "console";
 
 interface Props {
   name: string;
@@ -13,7 +14,7 @@ const MainMenueLayout = ({ name, backButton, children }: Props) => {
   return (
     <div className="menueScreen">
       <h1>{name}</h1>
-      <MainMenueButton />
+      {backButton && <MainMenueButton />}
     </div>
   );
 };
