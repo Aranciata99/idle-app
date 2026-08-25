@@ -10,14 +10,16 @@ const LoginForm = () => {
     if (username === "") {
       setShowError(true);
     } else {
-      const response = await fetch("/api/user", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username }),
-      });
+      setShowError(false);
+      //   const response = await fetch("/api/user", {
+      //     method: "POST",
+      //     headers: { "Content-Type": "application/json" },
+      //     body: JSON.stringify({ username }),
+      //   });
 
-      const data = await response.json();
-      console.log("User gespeichert:", data);
+      //   const data = await response.json();
+      //   console.log("User gespeichert:", data);
+      // }
     }
   };
 
@@ -25,7 +27,7 @@ const LoginForm = () => {
     <form className="loginForm">
       <input
         type="text"
-        placeholder={showError ? "GIB EINEN USERNAME EIN!" : "USERNAME"}
+        placeholder={showError ? "CHOOSE A USERNAME!" : "USERNAME"}
         value={username}
         onChange={(e) => setUsername(e.target.value)}
       />
