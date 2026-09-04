@@ -7,7 +7,7 @@ const accountPage = () => {
   return (
     <>
       <LoginForm></LoginForm>
-      <MainMenueLayout name="ACCOUNT" backButton>
+      <MainMenueLayout name="OPEN BOOK" backButton>
         <></>
       </MainMenueLayout>
     </>

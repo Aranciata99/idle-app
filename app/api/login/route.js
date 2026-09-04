@@ -10,7 +10,20 @@ export async function GET() {
     } catch(error) {
         console.log(error)
         return NextResponse.json({error: error.message})
+    }   
+}
+
+export async function POST(request) {
+    try {
+        const { bookname, password } = await request.json();
+
+        const db = await createConnection();
+        const sql = "INSERT INTO login (bookname, password) VALUES (?, ?)";
+        await db.query(sql, [bookname, password]);
+        return NextResponse.json({ success: true });
+    } catch(error) {
+        console.log(error);
+        return NextResponse.json({ error: error.message });
     }
-    
 }
 
