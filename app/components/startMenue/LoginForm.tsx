@@ -12,9 +12,9 @@ const LoginForm = () => {
   useEffect(() => {
     //direkte Weiterleitung wenn eingelogged
     //sessionStorage.clear();
-    if (sessionStorage.length > 0) {
-      router.push("/pages/gamePage");
-    }
+    // if (sessionStorage.length > 0) {
+    //   router.push("/pages/gamePage");
+    // }
     //Fetch Date
     const fetchData = async () => {
       try {
@@ -64,7 +64,8 @@ const LoginForm = () => {
           setShowMissingInput(true);
         } else {
           //SUCESS
-          await fetch("/api/login", {
+          //Create new Login
+          const response = await fetch("/api/login", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -72,7 +73,21 @@ const LoginForm = () => {
               password: userPassword,
             }),
           });
-          startSession();
+          const data = await response.json();
+          sessionStorage.setItem("userId", String(data.id));
+          sessionStorage.setItem("userName", userName);
+
+          // console.log(sessionStorage);
+          const responseScore = await fetch("/api/score", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              id: data.id,
+              lastUpdate: new Date().toISOString(),
+              mainValue: 0,
+            }),
+          });
+          await responseScore.json();
           router.push("/pages/gamePage");
         }
       }
@@ -91,7 +106,11 @@ const LoginForm = () => {
           setShowMissingInput(true);
         } else if (passwordOfBookname(userName, userPassword)) {
           //SUCESS
-          startSession();
+          const user = login.find((login) => login.bookname === userName);
+          if (user) {
+            sessionStorage.setItem("userId", String(user.id));
+            sessionStorage.setItem("userName", userName);
+          }
           router.push("/pages/gamePage");
         } else {
           setShowError("WRONG PASSWORD");
@@ -104,12 +123,14 @@ const LoginForm = () => {
     }
   };
 
-  //safe session data – Keep Loged in
-  const startSession = () => {
-    const id = login.findIndex((login) => login.bookname === userName);
-    sessionStorage.setItem("userId", String(id));
-    sessionStorage.setItem("userName", userName);
-  };
+  // //safe session data – Keep Loged in
+  // const startSession = (chosenName: string) => {
+  //   const user = login.find((login) => login.bookname === chosenName);
+  //   if (user) {
+  //     sessionStorage.setItem("userId", String(user.id));
+  //     sessionStorage.setItem("userName", userName);
+  //   }
+  // };
 
   return (
     <form className="loginForm">

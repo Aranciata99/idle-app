@@ -1,7 +1,9 @@
 import React from "react";
 
+import GameLayout from "../../components/game/GameLayout";
+
 const gamePage = () => {
-  return <div>GAME</div>;
+  return <GameLayout />;
 };
 
 export default gamePage;

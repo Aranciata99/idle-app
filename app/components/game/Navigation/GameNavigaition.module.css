@@ -1,0 +1,26 @@
+.container {
+  position: fixed;
+  right: 0;
+  margin: 20px;
+  width: 60px;
+  border: solid 2;
+  border-radius: 1000px;
+}
+
+.iconContainer {
+  margin: 7px;
+  background-color: black;
+  border-radius: 1000px;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.iconContainer:hover {
+  transform: scale(90%);
+}
+
+.iconContainer img {
+  height: 100%;
+  width: 100%;
+  transform: scale(80%);
+}

@@ -19,8 +19,8 @@ export async function POST(request) {
 
         const db = await createConnection();
         const sql = "INSERT INTO login (bookname, password) VALUES (?, ?)";
-        await db.query(sql, [bookname, password]);
-        return NextResponse.json({ success: true });
+        const [result] = await db.query(sql, [bookname, password]);
+        return NextResponse.json({ id: result.insertId });
     } catch(error) {
         console.log(error);
         return NextResponse.json({ error: error.message });
