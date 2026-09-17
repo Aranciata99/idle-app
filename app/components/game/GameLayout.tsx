@@ -5,6 +5,8 @@ import React, { useEffect, useState } from "react";
 import GameNavBar from "./Navigation/GameNavBar";
 //Styles
 import styles from "./GameLayout.module.css";
+//Data
+import sessionValues from "../../data/sessionValues.json";
 
 const GameLayout = () => {
   //
@@ -70,12 +72,18 @@ const GameLayout = () => {
   return (
     <div>
       <button
+        id="mainClickButton"
         className={styles.mainClickerButton}
         type="button"
         onClick={handleCreateClick}
-      ></button>
+      >
+        <div id="fillButton"></div>
+      </button>
       <div className={styles.mainValue}>
         <h1>{mainValue}</h1>
+      </div>
+      <div className={styles.sessionValue}>
+        <h1>{sessionValues.levelTitles[0].label}</h1>
       </div>
       <GameNavBar />
     </div>
